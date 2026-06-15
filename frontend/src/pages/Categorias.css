@@ -1,0 +1,73 @@
+/* Categorias Page Styles */
+.categorias-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
+.categorias-page h1 {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.categorias-page h3 {
+  color: #495057;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #667eea;
+  padding-left: 1rem;
+}
+
+.categorias-page .table {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.categorias-page .table th {
+  background-color: #2c3e50;
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.categorias-page .table td {
+  vertical-align: middle;
+  padding: 1rem;
+}
+
+.categorias-page .table-hover tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.categorias-page .btn-warning {
+  background-color: #ffc107;
+  border: none;
+  color: black;
+}
+
+.categorias-page .btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.categorias-page .btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.categorias-page .btn-danger:hover {
+  background-color: #c82333;
+}
+
+.categorias-page .btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.categorias-page .form-control-sm {
+  border-radius: 4px;
+}
