@@ -1,0 +1,67 @@
+/* Form Libro Styles */
+.form-libro-container {
+  padding: 2rem 0;
+}
+
+.form-libro {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 8px;
+  padding: 2rem;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-libro h3 {
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.form-libro .form-label {
+  color: white;
+  font-weight: 500;
+}
+
+.form-libro .form-control {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.75rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.form-libro .form-control:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: white;
+  color: white;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+.form-libro .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-libro .form-control option {
+  color: black;
+  background-color: white;
+}
+
+.form-libro .btn-primary {
+  background-color: #007bff;
+  border: none;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.form-libro .btn-primary:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-libro .btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

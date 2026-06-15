@@ -1,0 +1,122 @@
+/* Buscar Libro Page Styles */
+.buscar-libro-page {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
+.buscar-libro-page h1 {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.search-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-form {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 6px;
+}
+
+.search-form .form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.search-form .form-control {
+  border-radius: 4px;
+  border: 2px solid #e9ecef;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.search-form .form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.search-form .btn-primary {
+  background-color: #667eea;
+  border: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+}
+
+.search-form .btn-primary:hover {
+  background-color: #5568d3;
+}
+
+.results-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.results-container h3 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #667eea;
+  padding-left: 1rem;
+}
+
+.libro-card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.libro-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.libro-card .card-title {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.libro-card .card-text {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.libro-card .badge {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.libro-card .badge-success {
+  background-color: #28a745;
+}
+
+.libro-card .badge-warning {
+  background-color: #ffc107;
+  color: black;
+}
+
+.libro-card .badge-danger {
+  background-color: #dc3545;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
