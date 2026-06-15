@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
-const Category = require('./Category');
+const Categoria = require('./Categoria');
 
 const Book = sequelize.define('Book', {
   id: {
@@ -28,7 +28,7 @@ const Book = sequelize.define('Book', {
     type: DataTypes.INTEGER,
     field: 'category_id',
     references: {
-      model: Category,
+      model: Categoria,
       key: 'id',
     },
     allowNull: false,
@@ -38,7 +38,7 @@ const Book = sequelize.define('Book', {
   timestamps: true,
 });
 
-Book.belongsTo(Category, { foreignKey: 'categoryId', as: 'category' });
-Category.hasMany(Book, { foreignKey: 'categoryId' });
+Book.belongsTo(Categoria, { foreignKey: 'categoryId', as: 'category' });
+Categoria.hasMany(Book, { foreignKey: 'categoryId' });
 
 module.exports = Book;

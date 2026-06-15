@@ -1,11 +1,11 @@
 const Book = require('../models/Book');
-const Category = require('../models/Category');
+const Categoria = require('../models/Categoria');
 const { Op } = require('sequelize');
 
 exports.getAllBooks = async (req, res) => {
   try {
     const books = await Book.findAll({
-      include: [{ model: Category, as: 'category', attributes: ['id', 'name'] }],
+      include: [{ model: Categoria, as: 'category', attributes: ['id', 'nombre'] }],
       order: [['title', 'ASC']],
     });
     res.json(books);
@@ -17,7 +17,7 @@ exports.getAllBooks = async (req, res) => {
 exports.getBookById = async (req, res) => {
   try {
     const book = await Book.findByPk(req.params.id, {
-      include: [{ model: Category, as: 'category' }],
+      include: [{ model: Categoria, as: 'category' }],
     });
     if (!book) return res.status(404).json({ message: 'Libro no encontrado' });
     res.json(book);
@@ -29,7 +29,7 @@ exports.getBookById = async (req, res) => {
 exports.createBook = async (req, res) => {
   try {
     const { title, author, publicationYear, categoryId } = req.body;
-    const category = await Category.findByPk(categoryId);
+    const category = await Categoria.findByPk(categoryId);
     if (!category) return res.status(400).json({ message: 'La categoría no existe' });
 
     const newBook = await Book.create({ title, author, publicationYear, categoryId });
@@ -46,7 +46,7 @@ exports.updateBook = async (req, res) => {
 
     const { title, author, publicationYear, categoryId } = req.body;
     if (categoryId) {
-      const category = await Category.findByPk(categoryId);
+      const category = await Categoria.findByPk(categoryId);
       if (!category) return res.status(400).json({ message: 'La categoría no existe' });
     }
 
@@ -75,7 +75,7 @@ exports.searchByTitle = async (req, res) => {
 
     const books = await Book.findAll({
       where: { title: { [Op.iLike]: `%${titulo}%` } },
-      include: [{ model: Category, as: 'category' }],
+      include: [{ model: Categoria, as: 'category' }],
     });
     res.json(books);
   } catch (error) {
@@ -90,7 +90,7 @@ exports.searchByAuthor = async (req, res) => {
 
     const books = await Book.findAll({
       where: { author: { [Op.iLike]: `%${autor}%` } },
-      include: [{ model: Category, as: 'category' }],
+      include: [{ model: Categoria, as: 'category' }],
     });
     res.json(books);
   } catch (error) {

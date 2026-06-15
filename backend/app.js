@@ -4,6 +4,10 @@ const morgan = require('morgan');
 const bookRoutes = require('./routes/bookRoutes');
 const categoriaRoutes = require('./routes/categoriaRoutes');
 
+// Importar modelos
+require('./models/Categoria');
+require('./models/Book');
+
 const app = express();
 
 // Middlewares
