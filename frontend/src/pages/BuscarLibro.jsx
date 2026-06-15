@@ -133,24 +133,19 @@ export default function BuscarLibro() {
                   <div key={libro.id} className="col-md-6 col-lg-4 mb-4">
                     <div className="card libro-card">
                       <div className="card-body">
-                        <h5 className="card-title">{libro.titulo}</h5>
+                        <h5 className="card-title">{libro.title}</h5>
                         <p className="card-text">
-                          <strong>Autor:</strong> {libro.autor}
+                          <strong>Autor:</strong> {libro.author}
                         </p>
-                        {libro.isbn && (
+                        {libro.publicationYear && (
                           <p className="card-text">
-                            <strong>ISBN:</strong> {libro.isbn}
+                            <strong>Año:</strong> {libro.publicationYear}
                           </p>
                         )}
                         <div className="d-flex justify-content-between align-items-center">
-                          <span className={`badge ${getEstadoClass(libro.estado)}`}>
-                            {libro.estado}
-                          </span>
-                          {libro.categoriaId && (
-                            <small className="text-muted">
-                              ID Categoría: {libro.categoriaId}
-                            </small>
-                          )}
+                          <small className="text-muted">
+                            ID: {libro.id}
+                          </small>
                         </div>
                       </div>
                     </div>
@@ -163,17 +158,4 @@ export default function BuscarLibro() {
       </div>
     </div>
   );
-}
-
-function getEstadoClass(estado) {
-  switch (estado) {
-    case 'disponible':
-      return 'badge-success';
-    case 'prestado':
-      return 'badge-warning';
-    case 'mantenimiento':
-      return 'badge-danger';
-    default:
-      return 'badge-secondary';
-  }
 }

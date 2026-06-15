@@ -42,7 +42,11 @@ export default function Libros() {
 
   const startEdit = (libro) => {
     setEditingId(libro.id);
-    setEditData({ ...libro });
+    setEditData({ 
+      ...libro,
+      categoryId: libro.categoryId,
+      publicationYear: libro.publicationYear
+    });
   };
 
   const cancelEdit = () => {
@@ -66,19 +70,6 @@ export default function Libros() {
     } catch (err) {
       setError('Error al actualizar el libro');
       console.error(err);
-    }
-  };
-
-  const getEstadoClass = (estado) => {
-    switch (estado) {
-      case 'disponible':
-        return 'badge-success';
-      case 'prestado':
-        return 'badge-warning';
-      case 'mantenimiento':
-        return 'badge-danger';
-      default:
-        return 'badge-secondary';
     }
   };
 
@@ -110,8 +101,7 @@ export default function Libros() {
                     <th>ID</th>
                     <th>Título</th>
                     <th>Autor</th>
-                    <th>ISBN</th>
-                    <th>Estado</th>
+                    <th>Año</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -123,57 +113,41 @@ export default function Libros() {
                         {editingId === libro.id ? (
                           <input
                             type="text"
-                            name="titulo"
-                            value={editData.titulo}
+                            name="title"
+                            value={editData.title}
                             onChange={handleEditChange}
                             className="form-control form-control-sm"
                           />
                         ) : (
-                          libro.titulo
+                          libro.title
                         )}
                       </td>
                       <td>
                         {editingId === libro.id ? (
                           <input
                             type="text"
-                            name="autor"
-                            value={editData.autor}
+                            name="author"
+                            value={editData.author}
                             onChange={handleEditChange}
                             className="form-control form-control-sm"
                           />
                         ) : (
-                          libro.autor
+                          libro.author
                         )}
                       </td>
                       <td>
                         {editingId === libro.id ? (
                           <input
-                            type="text"
-                            name="isbn"
-                            value={editData.isbn}
+                            type="number"
+                            name="publicationYear"
+                            value={editData.publicationYear}
                             onChange={handleEditChange}
                             className="form-control form-control-sm"
+                            min="1450"
+                            max={new Date().getFullYear()}
                           />
                         ) : (
-                          libro.isbn || '-'
-                        )}
-                      </td>
-                      <td>
-                        {editingId === libro.id ? (
-                          <select
-                            name="estado"
-                            value={editData.estado}
-                            onChange={handleEditChange}
-                            className="form-control form-control-sm"
-                          >
-                            <option value="disponible">Disponible</option>
-                            <option value="prestado">Prestado</option>
-                            <option value="mantenimiento">Mantenimiento</option>
-                          </select>
-                        ) : (
-                          <span className={`badge ${getEstadoClass(libro.estado)}`}>
-                            {libro.estado}
-                          </span>
+                          libro.publicationYear || '-'
                         )}
                       </td>
                       <td>

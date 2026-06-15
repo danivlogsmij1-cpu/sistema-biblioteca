@@ -5,11 +5,10 @@ import './FormLibro.css';
 
 export default function FormLibro({ onLibroCreated }) {
   const [formData, setFormData] = useState({
-    titulo: '',
-    autor: '',
-    isbn: '',
-    estado: 'disponible',
-    categoriaId: '',
+    title: '',
+    author: '',
+    publicationYear: new Date().getFullYear(),
+    categoryId: '',
   });
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,7 +43,7 @@ export default function FormLibro({ onLibroCreated }) {
     setSuccess(false);
 
     try {
-      if (!formData.titulo.trim() || !formData.autor.trim()) {
+      if (!formData.title.trim() || !formData.author.trim()) {
         setError('Título y autor son requeridos');
         setLoading(false);
         return;
@@ -53,11 +52,10 @@ export default function FormLibro({ onLibroCreated }) {
       await libroService.createLibro(formData);
       setSuccess(true);
       setFormData({
-        titulo: '',
-        autor: '',
-        isbn: '',
-        estado: 'disponible',
-        categoriaId: '',
+        title: '',
+        author: '',
+        publicationYear: new Date().getFullYear(),
+        categoryId: '',
       });
 
       setTimeout(() => setSuccess(false), 3000);
@@ -86,15 +84,15 @@ export default function FormLibro({ onLibroCreated }) {
         <form onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-md-6 mb-3">
-              <label htmlFor="titulo" className="form-label">
+              <label htmlFor="title" className="form-label">
                 Título *
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="titulo"
-                name="titulo"
-                value={formData.titulo}
+                id="title"
+                name="title"
+                value={formData.title}
                 onChange={handleChange}
                 placeholder="Título del libro"
                 required
@@ -102,15 +100,15 @@ export default function FormLibro({ onLibroCreated }) {
             </div>
 
             <div className="col-md-6 mb-3">
-              <label htmlFor="autor" className="form-label">
+              <label htmlFor="author" className="form-label">
                 Autor *
               </label>
               <input
                 type="text"
                 className="form-control"
-                id="autor"
-                name="autor"
-                value={formData.autor}
+                id="author"
+                name="author"
+                value={formData.author}
                 onChange={handleChange}
                 placeholder="Nombre del autor"
                 required
@@ -120,29 +118,31 @@ export default function FormLibro({ onLibroCreated }) {
 
           <div className="row">
             <div className="col-md-6 mb-3">
-              <label htmlFor="isbn" className="form-label">
-                ISBN
+              <label htmlFor="publicationYear" className="form-label">
+                Año de Publicación
               </label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
-                id="isbn"
-                name="isbn"
-                value={formData.isbn}
+                id="publicationYear"
+                name="publicationYear"
+                value={formData.publicationYear}
                 onChange={handleChange}
-                placeholder="ISBN del libro"
+                placeholder="Año de publicación"
+                min="1450"
+                max={new Date().getFullYear()}
               />
             </div>
 
             <div className="col-md-6 mb-3">
-              <label htmlFor="categoriaId" className="form-label">
+              <label htmlFor="categoryId" className="form-label">
                 Categoría
               </label>
               <select
                 className="form-control"
-                id="categoriaId"
-                name="categoriaId"
-                value={formData.categoriaId}
+                id="categoryId"
+                name="categoryId"
+                value={formData.categoryId}
                 onChange={handleChange}
               >
                 <option value="">Seleccionar categoría</option>
@@ -153,23 +153,6 @@ export default function FormLibro({ onLibroCreated }) {
                 ))}
               </select>
             </div>
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="estado" className="form-label">
-              Estado
-            </label>
-            <select
-              className="form-control"
-              id="estado"
-              name="estado"
-              value={formData.estado}
-              onChange={handleChange}
-            >
-              <option value="disponible">Disponible</option>
-              <option value="prestado">Prestado</option>
-              <option value="mantenimiento">Mantenimiento</option>
-            </select>
           </div>
 
           <button
